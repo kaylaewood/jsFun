@@ -21,24 +21,16 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
   orangeKittyNames() {
-    
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitten => kitten.color === 'orange').map(kitten => kitten.name);
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   },
 
   sortByAge() {
     // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => b.age - a.age);
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   },
 
   growUp() {
@@ -54,8 +46,10 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => b.age - a.age).map(kitten => {
+      kitten.age += 2;
+      return kitten;
+    });
     return result;
   }
 };
@@ -80,7 +74,7 @@ const kittyPrompts = {
 const clubPrompts = {
   membersBelongingToClubs() {
     // Create an object whose keys are the names of people, and whose values are
-    // arrays that include the names of the clubs that person is a part of. e.g. 
+    // arrays that include the names of the clubs that person is a part of. e.g.
     // {
     //   Louisa: ['Drama', 'Art'],
     //   Pam: ['Drama', 'Art', 'Chess'],
@@ -152,7 +146,7 @@ const cakePrompts = {
   stockPerCake() {
     // Return an array of objects that include just the flavor of the cake and how
     // much of that cake is in stock e.g.
-    // [ 
+    // [
     //    { flavor: 'dark chocolate', inStock: 15 },
     //    { flavor: 'yellow', inStock: 14 },
     //    ..etc
@@ -192,7 +186,7 @@ const cakePrompts = {
     // Annotation:
     // Write your annotation here as a comment
   },
-  
+
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
@@ -219,11 +213,11 @@ const cakePrompts = {
   groceryList() {
     // I need to make a grocery list. Please give me an object where the keys are
     // each topping, and the values are the amount of that topping I need to buy e.g.
-    // { 
+    // {
     //    'dutch process cocoa': 1,
     //    'toasted sugar': 3,
     //    'smoked sea salt': 3,
-    //    'berries': 2, 
+    //    'berries': 2,
     //    ...etc
     // }
 
@@ -272,7 +266,7 @@ const classPrompts = {
   totalCapacities() {
     // Create an object where the keys are 'feCapacity' and 'beCapacity',
     // and the values are the total capacity for all classrooms in each program e.g.
-    // { 
+    // {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
@@ -387,7 +381,7 @@ const breweryPrompts = {
 const turingPrompts = {
   studentsForEachInstructor() {
     // Return an array of instructors where each instructor is an object
-    // with a name and the count of students in their module. e.g. 
+    // with a name and the count of students in their module. e.g.
     // [
     //  { name: 'Pam', studentCount: 21 },
     //  { name: 'Robbie', studentCount: 18 }
@@ -402,7 +396,7 @@ const turingPrompts = {
 
   studentsPerInstructor() {
     // Return an object of how many students per teacher there are in each cohort e.g.
-    // { 
+    // {
     // cohort1806: 9,
     // cohort1804: 10.5
     // }
@@ -439,7 +433,7 @@ const turingPrompts = {
   curriculumPerTeacher() {
     // Return an object where each key is a curriculum topic and each value is
     // an array of instructors who teach that topic e.g.:
-    // { 
+    // {
     //   html: [ 'Travis', 'Louisa' ],
     //   css: [ 'Travis', 'Louisa' ],
     //   javascript: [ 'Travis', 'Louisa', 'Christie', 'Will' ],
@@ -510,7 +504,7 @@ const astronomyPrompts = {
   starsInConstellations() {
     // Return an array of all the stars that appear in any of the constellations
     // listed in the constellations object e.g.
-    // [ 
+    // [
     //   { name: 'Rigel',
     //     visualMagnitude: 0.13,
     //     constellation: 'Orion',
@@ -550,16 +544,16 @@ const astronomyPrompts = {
 
   constellationsStarsExistIn() {
     // Return an array of the names of the constellations that the brightest stars are part of e.g.
-    
+
     //  [ "Canis Major",
     //    "Carina",
     //    "Boötes",
     //    "Auriga",
     //    "Orion",
-    //    "Lyra", 
-    //    "Canis Minor", 
-    //    "The Plow", 
-    //    "Orion", 
+    //    "Lyra",
+    //    "Canis Minor",
+    //    "The Plow",
+    //    "Orion",
     //    "The Little Dipper" ]
 
 
@@ -603,7 +597,7 @@ const ultimaPrompts = {
 
   charactersByTotal() {
 
-    // Return the sum damage and total range for each character as an object. 
+    // Return the sum damage and total range for each character as an object.
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -633,7 +627,7 @@ const ultimaPrompts = {
 // DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
 const dinosaurPrompts = {
   countAwesomeDinosaurs() {
-    // Return an object where each key is a movie title and each value is the 
+    // Return an object where each key is a movie title and each value is the
     // number of awesome dinosaurs in that movie. e.g.:
     // {
     //   'Jurassic Park': 5,
@@ -655,24 +649,24 @@ const dinosaurPrompts = {
         an object whose key is a movie's title and whose value is the average age
         of the cast on the release year of that movie.
       e.g.:
-      { 
-        'Steven Spielberg': 
-          { 
+      {
+        'Steven Spielberg':
+          {
             'Jurassic Park': 34,
-            'The Lost World: Jurassic Park': 37 
+            'The Lost World: Jurassic Park': 37
           },
-        'Joe Johnston': 
-          { 
-            'Jurassic Park III': 44 
+        'Joe Johnston':
+          {
+            'Jurassic Park III': 44
           },
-        'Colin Trevorrow': 
-          { 
+        'Colin Trevorrow':
+          {
             'Jurassic World': 56
            },
-        'J. A. Bayona': 
-          { 
-            'Jurassic World: Fallen Kingdom': 59 
-          } 
+        'J. A. Bayona':
+          {
+            'Jurassic World: Fallen Kingdom': 59
+          }
       }
     */
 
@@ -692,7 +686,7 @@ const dinosaurPrompts = {
         name: 'Justin Duncan',
         nationality: 'Alien',
         imdbStarMeterRating: 0
-      }, 
+      },
       {
         name: 'Karin Ohman',
         nationality: 'Chinese',

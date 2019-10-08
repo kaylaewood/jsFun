@@ -16,7 +16,7 @@ const {
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
-  describe("Kitty Prompts", () => {
+  describe.only("Kitty Prompts", () => {
     it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       expect(e).to.deep.equal(["Tiger", "Snickers"])
@@ -349,17 +349,17 @@ describe("PROTOTYPES", () => {
   }), describe("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
-      expect(e).to.deep.equal([{ 
+      expect(e).to.deep.equal([{
         name: 'Rigel',
         visualMagnitude: 0.13,
         constellation: 'Orion',
         lightYearsFromEarth: 860,
-        color: 'blue' 
+        color: 'blue'
       }, { name: 'Betelgeuse',
         visualMagnitude: 0.5,
         constellation: 'Orion',
         lightYearsFromEarth: 640,
-        color: 'red' 
+        color: 'red'
       }])
     }), it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
@@ -501,7 +501,7 @@ describe("PROTOTYPES", () => {
         name: 'Justin Duncan',
         nationality: 'Alien',
         imdbStarMeterRating: 0
-      }, 
+      },
       {
         name: 'Karin Ohman',
         nationality: 'Chinese',

@@ -16,7 +16,7 @@ const {
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
-  describe.only("Kitty Prompts", () => {
+  describe("Kitty Prompts", () => {
     it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       expect(e).to.deep.equal(["Tiger", "Snickers"])
@@ -59,7 +59,7 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     })
-  }), describe("Club Prompts", () => {
+  }), describe.only("Club Prompts", () => {
     it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],

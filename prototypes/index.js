@@ -35,17 +35,6 @@ const kittyPrompts = {
 
   growUp() {
     // Return an array of kitties who have all grown up by 2 years e.g.
-    // [{
-    //   name: 'Felicia',
-    //   age: 4,
-    //   color: 'grey'
-    // },
-    // {
-    //   name: 'Tiger',
-    //   age: 7,
-    //   color: 'orange'
-    // },
-    // ...etc]
     const result = kitties.sort((a, b) => b.age - a.age).map(kitten => {
       kitten.age += 2;
       return kitten;
@@ -75,20 +64,18 @@ const clubPrompts = {
   membersBelongingToClubs() {
     // Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
-    // {
-    //   Louisa: ['Drama', 'Art'],
-    //   Pam: ['Drama', 'Art', 'Chess'],
-    //   ...etc
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((object, club) => {
+      club.members.forEach(member => {
+        if(!object[member]) {
+          object[member] = [];
+        }
+        return object[member].push(club.club);
+      });
+      return object;
+    }, {});
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
 };
-
 
 
 
